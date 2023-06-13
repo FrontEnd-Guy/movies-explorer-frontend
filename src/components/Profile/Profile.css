@@ -30,6 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 30px;
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
@@ -39,7 +40,16 @@
 
 .profile__form-input {
   all: unset;
+  width: 60%;
   text-align: right;
+  transition: border 0.4s ease-in-out;
+  padding: 5px;
+}
+
+.profile__form-input:focus {
+  /* border-bottom: 1px solid var(--blue-color); */
+  /* box-shadow: 0 0 10px #719ECE; */
+  background-color: var(--light-grey-color);
 }
 
 .profile__form-input:invalid {

@@ -44,10 +44,10 @@ function Login() {
         error={apiErrMsg}
       >
         <FormInput
-          name="name"
-          title="Имя"
-          type="text"
-          placeholder="Ваше имя"
+          name="email"
+          title="E-mail"
+          type="email"
+          placeholder="Ваш E-mail"
           required={true}
           minLength="3"
           maxLength="30"
