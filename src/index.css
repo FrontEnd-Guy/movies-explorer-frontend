@@ -1,0 +1,25 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+:root {
+  --font-inter: "Inter", sans-serif;
+  --white-color: #ffffff;
+  --black-color: #000000;
+  --dark-color: #073042;
+  --green-color: #2be080;
+  --blue-color: #3456f3;
+  --light-grey-color: #f2f2f2;
+  --grey-color: #e8e8e8;
+  --grey-text: #a0a0a0;
+  --grey-background: #f5f5f5;
+  --red-color: #ff3055;
+  --max-width: 1280px;
+  --header-height: 74px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
