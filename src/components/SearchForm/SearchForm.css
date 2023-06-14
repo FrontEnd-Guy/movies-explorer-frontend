@@ -53,6 +53,7 @@
 
 .search__button {
   all: unset;
+  cursor: pointer;
   background: var(--blue-color);
   border-radius: 48px;
   font-weight: 500;
@@ -63,7 +64,7 @@
   width: 58.65px;
   height: 34px;
   margin-left: 21.35px;
-  transition: opacity 0.3 ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   flex-shrink: 0;
 }
 

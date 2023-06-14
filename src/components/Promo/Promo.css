@@ -1,14 +1,14 @@
 .promo {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - var(--header-height));
   max-height: 648px;
   background-color: var(--dark-color);
+  display: flex;
 }
 
 .promo__container {
   width: 100%;
   max-width: var(--max-width);
-  height: calc(100% - var(--header-height));
   margin: 0 auto;
   padding: 75px 70px 85px;
   display: flex;

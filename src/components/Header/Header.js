@@ -11,10 +11,12 @@ function Header() {
     <header
       className={`header ${location.pathname === "/" ? "header_dark" : ""}`}
     >
-      <Link className="header__logo-container" to="/">
-        <img className="header__logo" src={images.headerLogo} alt="logo" />
-      </Link>
-      <Navigation />
+      <div className="header__container">
+        <Link className="header__logo-container" to="/">
+          <img className="header__logo" src={images.headerLogo} alt="logo" />
+        </Link>
+        <Navigation />
+      </div>
     </header>
   );
 }

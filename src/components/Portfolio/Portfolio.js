@@ -31,8 +31,8 @@ function Portfolio() {
               target="_blank"
             >
               {item.title}
+              <LinkIcon />
             </a>
-            <LinkIcon />
           </li>
         ))}
       </ul>

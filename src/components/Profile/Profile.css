@@ -47,8 +47,6 @@
 }
 
 .profile__form-input:focus {
-  /* border-bottom: 1px solid var(--blue-color); */
-  /* box-shadow: 0 0 10px #719ECE; */
   background-color: var(--light-grey-color);
 }
 

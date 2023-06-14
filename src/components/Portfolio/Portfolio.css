@@ -21,10 +21,6 @@
 }
 
 .portfolio__links-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   padding: 20px 0 19px;
   border-bottom: 1px solid var(--grey-color);
 }
@@ -35,6 +31,10 @@
 }
 
 .portfolio__link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   font-weight: 400;
   font-size: 30px;
   line-height: 50px;

@@ -1,12 +1,10 @@
 import React from "react";
 import images from "../../utils/images";
-import Header from "../Header/Header";
 import "./Promo.css";
 
 function Promo() {
   return (
     <section className="promo">
-      <Header />
       <div className="promo__container">
         <div>
           <img

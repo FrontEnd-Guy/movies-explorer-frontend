@@ -18,7 +18,7 @@ import movies from "../../utils/movies";
 
 function App() {
   const location = useLocation();
-  const headerRoutes = ["/movies", "/saved-movies", "/profile"];
+  const headerRoutes = ["/", "/movies", "/saved-movies", "/profile"];
   const footerRoutes = ["/", "/movies", "/saved-movies"];
 
   return (

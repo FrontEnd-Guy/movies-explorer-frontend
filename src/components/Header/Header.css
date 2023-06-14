@@ -1,4 +1,5 @@
-.header {
+.header__container {
+  width: 100%;
   max-width: var(--max-width);
   height: var(--header-height);
   padding: 0 70px;
@@ -24,13 +25,13 @@
 }
 
 @media screen and (max-width: 900px) {
-  .header {
+  .header__container {
     padding: 0 30px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .header {
+  .header__container {
     padding: 0 14px;
   }
 }
