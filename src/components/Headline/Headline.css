@@ -1,0 +1,40 @@
+.headline {
+  max-width: var(--max-width);
+  padding: 0 70px;
+  margin: 0 auto;
+}
+
+.headline__title {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  color: var(--black-color);
+  padding: 110px 0 23px;
+  border-bottom: var(--black-color) solid 1px;
+}
+
+@media screen and (max-width: 900px) {
+  .headline {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .headline__title {
+    padding-top: 90px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .headline {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .headline__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding-top: 70px;
+    padding-bottom: 28px;
+  }
+}
