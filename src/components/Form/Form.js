@@ -14,6 +14,7 @@ function Form({
   linkName,
   error,
 }) {
+
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form__content">
@@ -23,10 +24,10 @@ function Form({
         <h1 className="form__title">{greeting}</h1>
         <fieldset className="form__inputs">
           {children}
-          <span className="form__error">{error}</span>
         </fieldset>
       </div>
       <div className="form__options">
+        <span className="form__error">{error}</span>
         <button className="form__button" type="submit" disabled={disabled}>
           {buttonText}
         </button>

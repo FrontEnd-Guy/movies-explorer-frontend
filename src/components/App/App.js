@@ -14,8 +14,6 @@ import NotFound from "../NotFound/NotFound";
 import { SavedMoviesProvider } from "../../providers/SavedMoviesProvider";
 import CurrentUserProvider from "../../providers/CurrentUserContext";
 
-import movies from "../../utils/movies";
-
 function App() {
   const location = useLocation();
   const headerRoutes = ["/", "/movies", "/saved-movies", "/profile"];
@@ -35,7 +33,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
             <Route
               path="/movies"
-              element={<ProtectedRoute element={Movies} movies={movies} />}
+              element={<ProtectedRoute element={Movies} />}
             />
             <Route
               path="/saved-movies"

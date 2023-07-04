@@ -1,38 +1,44 @@
-import React, { useContext, useState, useCallback } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import { CurrentUserContext } from "../../providers/CurrentUserContext";
+import MainApi from "../../utils/MainApi";
 import "./Profile.css";
+import useFormWithValidation from '../../hooks/useFormWithValidation'; 
 
 function Profile() {
-  const { user, setUser, handleSignOut, apiErrMsg } = useContext(CurrentUserContext);
-
-  const [userData, setUserData] = useState({
-    userName: user.name,
-    userEmail: user.email,
-  });
-
-  const [errors, setErrors] = useState({
-    userName: "",
-    userEmail: "",
-  });
+  const { user, setUser, handleSignOut, apiErrMsg, setApiErrMsg } = useContext(CurrentUserContext);
 
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const handleChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setUserData((prevData) => ({ ...prevData, [name]: value }));
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: e.target.validationMessage,
-    }));
-  }, []);
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+
+  useEffect(() => {
+    if (user) {
+      resetForm({
+        name: user.name,
+        email: user.email,
+      }, {}, false);
+    }
+  }, [user, resetForm]);
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      setUser({ name: userData.userName, email: userData.userEmail });
-      setIsEditMode(false);
+      
+      if (!values.name || !values.email) {
+        setApiErrMsg("Both fields are required");
+        return;
+      }
+
+      MainApi.updateUser(values)
+        .then((data) => {
+          setUser({ name: data.name, email: data.email });
+          setIsEditMode(false);
+        })
+        .catch((error) => {
+          setApiErrMsg(error.message);
+        });
     },
-    [setUser, userData]
+    [setUser, values]
   );
 
   return (
@@ -46,9 +52,9 @@ function Profile() {
         <label className="profile__form-label">
           Имя
           <input
-            name="userName"
-            className="profile__form-input"
-            value={userData.userName}
+            name="name"
+            className={errors.name}
+            value={values.name || ''}
             disabled={!isEditMode}
             onChange={handleChange}
             required
@@ -61,9 +67,9 @@ function Profile() {
         <label className="profile__form-label">
           E-mail
           <input
-            name="userEmail"
+            name="email"
             className="profile__form-input"
-            value={userData.userEmail}
+            value={values.email || ''}
             disabled={!isEditMode}
             onChange={handleChange}
             required
@@ -77,11 +83,7 @@ function Profile() {
             <span className="profile__error">{apiErrMsg}</span>
             <button
               className="profile__save-button"
-              disabled={
-                Object.values(errors).some((error) => error) ||
-                (userData.userName === user.name &&
-                  userData.userEmail === user.email)
-              }
+              disabled={!isValid || (values.name === user.name && values.email === user.email)}
               type="submit"
               form="profile__form"
             >
@@ -107,3 +109,5 @@ function Profile() {
 }
 
 export default Profile;
+
+
