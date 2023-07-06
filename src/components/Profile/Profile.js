@@ -53,7 +53,7 @@ function Profile() {
           Имя
           <input
             name="name"
-            className={errors.name}
+            className="profile__form-input"
             value={values.name || ''}
             disabled={!isEditMode}
             onChange={handleChange}
