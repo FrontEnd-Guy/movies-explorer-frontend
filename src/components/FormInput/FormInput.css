@@ -19,6 +19,10 @@
   color: var(--black-color);
 }
 
+.form-input__field_error {
+  color: red;
+}
+
 .form-input__field:focus {
   border-bottom-color: var(--blue-color);
 }

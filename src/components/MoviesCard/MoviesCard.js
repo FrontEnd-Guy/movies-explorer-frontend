@@ -1,35 +1,60 @@
-import React from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import "./MoviesCard.css";
 import { useLocation } from "react-router-dom";
+import { SavedMoviesContext } from "../../providers/SavedMoviesProvider";
 
-function MoviesCard({ movie, isSaved, saveMovie, removeMovie }) {
+function MoviesCard({ movie, saveMovie, removeMovie }) {
   const location = useLocation();
+  const { savedMovies } = useContext(SavedMoviesContext);
 
-  const handleMovieBtnClick = (evt) => {
+  const [isSaved, setIsSaved] = useState(false);
+  const [imageUrl, setImageUrl] = useState(null);
+  const [foundMovie, setFoundMovie] = useState(null);
+
+  useEffect(() => {
+    const found = savedMovies.find((savedMovie) => savedMovie.movieId === movie.id);
+    setFoundMovie(found);
+    setIsSaved(!!found);
+  }, [movie.id, savedMovies]);
+
+  useEffect(() => {
+    if (typeof movie.image === "object") {
+      setImageUrl(`https://api.nomoreparties.co/${movie.image.url}`);
+    } else if (typeof movie.image === "string") {
+      setImageUrl(movie.image);
+    }
+  }, [movie.image]);
+
+  const handleMovieBtnClick = useCallback(async (evt) => {
     evt.preventDefault();
+
     if (location.pathname === "/movies") {
       if (!isSaved) {
         saveMovie(movie);
       } else {
-        removeMovie(movie._id);
+        if(foundMovie && foundMovie._id) {
+          removeMovie(foundMovie._id)
+        }
       }
     } else if (location.pathname === "/saved-movies") {
-      removeMovie(movie._id);
+      if(movie._id) {
+        removeMovie(movie._id);
+      }
     }
-  };
+  }, [isSaved, movie, location.pathname, foundMovie, saveMovie, removeMovie]);
 
   return (
     <article className="movie">
       <a
         className="movie__trailer-link"
-        href={movie.trailer}
+        href={movie.trailerLink}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img className="movie__image" src={movie.image} alt={movie.title} />
+        <img className="movie__image" src={imageUrl} alt={movie.nameEN} />
       </a>
       <div className="movie__main">
-        <h2 className="movie__title">{movie.title}</h2>
+        <h2 className="movie__title">{movie.nameRU}</h2>
         <button
           className={`movie__button ${
             location.pathname === "/movies"
