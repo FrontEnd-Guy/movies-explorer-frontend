@@ -23,26 +23,35 @@ function Movies() {
 
   useEffect(() => {
     const savedSearch = localStorage.getItem('searchTerm');
-    const savedCheckbox = localStorage.getItem('isChecked');
+    const savedCheckbox = JSON.parse(localStorage.getItem('isChecked'));
+
     if (savedSearch || savedCheckbox) {
       setSearchTerm(savedSearch);
-      setIsChecked(JSON.parse(savedCheckbox));
-      fetchMovies(savedSearch, JSON.parse(savedCheckbox));
-    };
+      setIsChecked(savedCheckbox);
+      fetchMovies(savedSearch, savedCheckbox);
+    }
   }, [user]);  
 
   const fetchMovies = async (searchTerm = '', isChecked = false) => {
     if (!user) {
       return;
     }
-  
+
     setIsLoading(true);
     setRequestError(null);
+
     try {
-      const data = await MoviesApi.getMovies(); 
-      
+      let data;
+      const initialMovies = JSON.parse(localStorage.getItem('movies'));
+
+      if (!initialMovies) {
+        data = await MoviesApi.getMovies();
+        localStorage.setItem('movies', JSON.stringify(data));
+      } else {
+        data = initialMovies;
+      }
+
       const filteredMovies = filterMovies(data, searchTerm, isChecked);
-  
       setFetchedMovies(filteredMovies);
       localStorage.setItem('searchTerm', searchTerm);
       localStorage.setItem('isChecked', JSON.stringify(isChecked));
@@ -52,14 +61,14 @@ function Movies() {
     } finally {
       setIsLoading(false);
     }
-  };  
+  };
   
   const isSaved = (movie) =>
     savedMovies.some((savedMovie) => savedMovie._id === movie._id);
 
   return (
     <main className="movies">
-      <SearchForm onSubmit={fetchMovies} searchTerm={searchTerm} isChecked={isChecked} onError={setFormError} />
+      <SearchForm onSubmit={async (term, checked) => fetchMovies(term, checked)} searchTerm={searchTerm} isChecked={isChecked} onError={setFormError} />
       {isLoading ? (
         <Preloader />
         ) : requestError ? (

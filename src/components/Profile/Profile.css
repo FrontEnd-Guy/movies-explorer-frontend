@@ -36,6 +36,14 @@
   line-height: 13px;
   color: var(--black-color);
   padding: 16px 0;
+  position: relative;
+}
+
+.profile__form-error{
+  color: red;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .profile__form-input {
@@ -46,10 +54,15 @@
   padding: 5px;
 }
 
+.profile__form-input_error {
+  color: red;
+}
+
 .profile__form-input:focus {
   background-color: var(--light-grey-color);
 }
 
+.profile__form-input_invalid,
 .profile__form-input:invalid {
   color: var(--red-color);
 }

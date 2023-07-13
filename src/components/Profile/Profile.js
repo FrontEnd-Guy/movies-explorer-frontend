@@ -25,20 +25,21 @@ function Profile() {
       e.preventDefault();
       
       if (!values.name || !values.email) {
-        setApiErrMsg("Both fields are required");
+        setApiErrMsg("Оба поля обязательны");
         return;
       }
-
+  
       MainApi.updateUser(values)
         .then((data) => {
           setUser({ name: data.name, email: data.email });
           setIsEditMode(false);
+          resetForm();  
         })
         .catch((error) => {
           setApiErrMsg(error.message);
         });
     },
-    [setUser, values]
+    [setUser, values, resetForm] 
   );
 
   return (
@@ -49,11 +50,11 @@ function Profile() {
         className="profile__form"
         onSubmit={handleSubmit}
       >
-        <label className="profile__form-label">
+        <label className='profile__form-label'>
           Имя
           <input
             name="name"
-            className="profile__form-input"
+            className={`profile__form-input ${errors.name ? 'profile__form-input_error' : ''}`}
             value={values.name || ''}
             disabled={!isEditMode}
             onChange={handleChange}
@@ -62,19 +63,21 @@ function Profile() {
             maxLength="30"
             type="text"
           />
+          <span className="profile__form-error">{errors.name}</span>
         </label>
         <div className="profile__separator" />
         <label className="profile__form-label">
           E-mail
           <input
             name="email"
-            className="profile__form-input"
+            className={`profile__form-input ${errors.email ? 'profile__form-input_error' : ''}`}
             value={values.email || ''}
             disabled={!isEditMode}
             onChange={handleChange}
             required
             type="email"
           />
+          <span className="profile__form-error">{errors.email}</span>
         </label>
       </form>
       <div className="profile__buttons">

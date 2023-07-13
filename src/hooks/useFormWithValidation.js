@@ -10,7 +10,19 @@ const useFormWithValidation = () => {
     const name = target.name;
     const value = target.value;
     setValues({ ...values, [name]: value });
-    setErrors({ ...errors, [name]: target.validationMessage });
+
+    let validationError = '';
+    if (!value) {
+      validationError = "Это поле - обязательное";
+    } else if (name === 'email') {
+      validationError = validateEmail(value) ? '' : 'Невалидный email';
+    } else if (name === 'name') {
+      validationError = validateName(value) ? '' : 'Имя должно содержать только буквы, пробелы и дефис';
+    } else if (name === 'password') {
+      validationError = value.trim() ? '' : 'Пароль не может быть пустым';
+    }
+
+    setErrors({ ...errors, [name]: validationError });
   }, [values, errors]);
 
   useEffect(() => {
@@ -30,7 +42,7 @@ const useFormWithValidation = () => {
   const validateName = useCallback(
     (value) => {
       // Регулярное выражение для проверки имени
-      const nameRegex = /^[\w\s-]*$/;
+      const nameRegex = /^[A-Za-z\u0400-\u04FF\s-]*$/;
       return nameRegex.test(value);
     },
     []

@@ -10,8 +10,9 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleSignIn(values);
-    resetForm();
+    handleSignIn(values)
+      .then(() => resetForm())
+      .catch((err) => console.log(err));
   };
 
   return (

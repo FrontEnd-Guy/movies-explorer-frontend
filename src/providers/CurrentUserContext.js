@@ -29,7 +29,7 @@ const CurrentUserProvider = ({ children }) => {
     } else {
       setIsLoading(false);
     }
-  }, [navigate]);
+  }, []);
 
   function handleSignOut() {
     setUser(null);
@@ -37,6 +37,7 @@ const CurrentUserProvider = ({ children }) => {
     localStorage.removeItem('jwt');
     localStorage.removeItem('searchTerm');
     localStorage.removeItem('isChecked');
+    localStorage.removeItem('movies');
     navigate("/");
   }
 
@@ -56,7 +57,7 @@ const CurrentUserProvider = ({ children }) => {
       } catch (err) {
         console.log(err);
         setApiErrMsg(err.message);
-        console.log(apiErrMsg);
+        throw err; 
       }
     },
     [navigate]
@@ -68,20 +69,20 @@ const CurrentUserProvider = ({ children }) => {
       try {
         const { token } = await AuthApi.signIn(data);
         localStorage.setItem("jwt", token);
-        MainApi.getUser(token)
+        return MainApi.getUser(token)
           .then((userData) => {
             setUser(userData);
             setApiErrMsg(null);
             navigate("/movies");
-          })
-          .catch((err) => console.log(err));
+          });
       } catch (err) {
         setApiErrMsg(err.message);
         console.log(err);
+        throw err; 
       }
     },
     [navigate]
-  );  
+  );
 
   if (isLoading) {
     return <Preloader />;

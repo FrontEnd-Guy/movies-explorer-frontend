@@ -11,10 +11,11 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleSignUp(values);
-    resetForm();
+    handleSignUp(values)
+      .then(() => resetForm())
+      .catch((err) => console.log(err));
   };
-
+  
   return (
     <main className="register">
       <Form
