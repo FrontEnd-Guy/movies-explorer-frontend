@@ -7,7 +7,7 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Register() {
   const { apiErrMsg, handleSignUp } = useContext(CurrentUserContext);
-  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({ email: '', name: '', password: '' });
 
   const handleSubmit = (event) => {
     event.preventDefault();

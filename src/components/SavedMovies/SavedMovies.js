@@ -1,32 +1,18 @@
-import React, { useContext, useEffect, useState, useMemo } from "react";
+import React, { useContext, useState, useMemo } from "react";
 import "./SavedMovies.css";
 import { SavedMoviesContext } from "../../providers/SavedMoviesProvider";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
-import MainApi from "../../utils/MainApi";
 import { filterMovies } from "../../utils/movieUtils";
 
 function SavedMovies() {
-  const { savedMovies, setSavedMovies, removeMovie } = useContext(SavedMoviesContext);
+  const { savedMovies, removeMovie } = useContext(SavedMoviesContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [isChecked, setIsChecked] = useState(false);
   const [formError, setFormError] = useState(null);
 
   const filteredMovies = useMemo(() => filterMovies(savedMovies, searchTerm, isChecked), [savedMovies, searchTerm, isChecked]);
   
-  useEffect(() => {
-    const fetchSavedMovies = async () => {
-      try {
-        const movies = await MainApi.getMovies();
-        setSavedMovies(movies);
-      } catch(error) {
-        console.log(error)
-      }
-    };
-
-    fetchSavedMovies();
-  }, []);
-
   function handleSearch(term, isChecked) {
     setSearchTerm(term);
     setIsChecked(isChecked);

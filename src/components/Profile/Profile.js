@@ -9,7 +9,7 @@ function Profile() {
 
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({ email: user.name, password: user.email });
 
   useEffect(() => {
     if (user) {

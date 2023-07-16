@@ -6,7 +6,7 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Login() {
   const { apiErrMsg, handleSignIn } = useContext(CurrentUserContext);
-  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({ email: '', password: '' });
 
   const handleSubmit = (event) => {
     event.preventDefault();
