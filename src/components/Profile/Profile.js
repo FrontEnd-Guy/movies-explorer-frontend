@@ -1,54 +1,61 @@
-import React, { useContext, useState, useCallback } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import { CurrentUserContext } from "../../providers/CurrentUserContext";
+import MainApi from "../../utils/MainApi";
 import "./Profile.css";
+import useFormWithValidation from '../../hooks/useFormWithValidation'; 
 
 function Profile() {
-  const { user, setUser, handleSignOut, apiErrMsg } = useContext(CurrentUserContext);
-
-  const [userData, setUserData] = useState({
-    userName: user.name,
-    userEmail: user.email,
-  });
-
-  const [errors, setErrors] = useState({
-    userName: "",
-    userEmail: "",
-  });
+  const { user, setUser, handleSignOut, apiErrMsg, setApiErrMsg } = useContext(CurrentUserContext);
 
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const handleChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setUserData((prevData) => ({ ...prevData, [name]: value }));
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: e.target.validationMessage,
-    }));
-  }, []);
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({ email: user.name, password: user.email });
+
+  useEffect(() => {
+    if (user) {
+      resetForm({
+        name: user.name,
+        email: user.email,
+      }, {}, false);
+    }
+  }, [user, resetForm]);
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      setUser({ name: userData.userName, email: userData.userEmail });
-      setIsEditMode(false);
+      
+      if (!values.name || !values.email) {
+        setApiErrMsg("Both fields are required");
+        return;
+      }
+  
+      MainApi.updateUser(values)
+        .then((data) => {
+          setUser({ name: data.name, email: data.email });
+          setIsEditMode(false);
+          resetForm();  
+        })
+        .catch((error) => {
+          setApiErrMsg(error.message);
+        });
     },
-    [setUser, userData]
+    [setUser, values, resetForm] 
   );
 
   return (
     <main className="profile">
-      <h1 className="profile__title">Привет, {user.name}!</h1>
+      <h1 className="profile__title">Hello, {user.name}!</h1>
       <form
         id="profile__form"
         className="profile__form"
         onSubmit={handleSubmit}
       >
-        <label className="profile__form-label">
-          Имя
+        <label className='profile__form-label'>
+          Name
           <input
-            name="userName"
-            className="profile__form-input"
-            value={userData.userName}
+            name="name"
+            className={`profile__form-input ${errors.name ? 'profile__form-input_error' : ''}`}
+            value={values.name || ''}
             disabled={!isEditMode}
             onChange={handleChange}
             required
@@ -56,19 +63,21 @@ function Profile() {
             maxLength="30"
             type="text"
           />
+          <span className="profile__form-error">{errors.name}</span>
         </label>
         <div className="profile__separator" />
         <label className="profile__form-label">
           E-mail
           <input
-            name="userEmail"
-            className="profile__form-input"
-            value={userData.userEmail}
+            name="email"
+            className={`profile__form-input ${errors.email ? 'profile__form-input_error' : ''}`}
+            value={values.email || ''}
             disabled={!isEditMode}
             onChange={handleChange}
             required
             type="email"
           />
+          <span className="profile__form-error">{errors.email}</span>
         </label>
       </form>
       <div className="profile__buttons">
@@ -77,15 +86,11 @@ function Profile() {
             <span className="profile__error">{apiErrMsg}</span>
             <button
               className="profile__save-button"
-              disabled={
-                Object.values(errors).some((error) => error) ||
-                (userData.userName === user.name &&
-                  userData.userEmail === user.email)
-              }
+              disabled={!isValid || (values.name === user.name && values.email === user.email)}
               type="submit"
               form="profile__form"
             >
-              Cохранить
+              Save
             </button>
           </>
         ) : (
@@ -94,10 +99,10 @@ function Profile() {
               className="profile__button"
               onClick={() => setIsEditMode(true)}
             >
-              Редактировать
+              Edit
             </button>
             <button className="profile__button" onClick={handleSignOut}>
-              Выйти из аккаунта
+              Log out
             </button>
           </>
         )}

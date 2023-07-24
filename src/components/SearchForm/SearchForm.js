@@ -1,28 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SearchForm.css";
 import { ReactComponent as SearchIcon } from "../../images/search-icon.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-function SearchForm() {
-  const [isChecked, setIsChecked] = useState(false);
+function SearchForm({ onSubmit, searchTerm, isChecked, onError, isOnSavedMoviesPage }) {
+  const [input, setInput] = useState(searchTerm || '');
+  const [checkbox, setCheckbox] = useState(isChecked || false);
+  
+  useEffect(() => {
+    setInput(searchTerm);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setCheckbox(isChecked);
+  }, [isChecked]);
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+    const newCheckboxState = !checkbox;
+    setCheckbox(newCheckboxState);
+    onSubmit(input, newCheckboxState);
+  };
+
+  const handleInputChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!input && !isOnSavedMoviesPage) {
+      onError('You need to enter a keyword');
+    } else {
+      onError(null)
+      onSubmit(input, checkbox);
+    }
   };
 
   return (
     <section className="search">
       <div className="search__container">
         <div className="search__bar">
-          <form className="search__form">
+          <form className="search__form" onSubmit={handleSubmit}>
             <SearchIcon className="search__icon" />
-            <input className="search__input" placeholder="Фильм" />
-            <button className="search__button">Найти</button>
+            <input className="search__input" placeholder="Movie" value={input} onChange={handleInputChange}/>
+            <button className="search__button">Find</button>
           </form>
         </div>
         <label className="search__filter">
-          <FilterCheckbox checked={isChecked} onChange={handleCheckboxChange} />
-          <span className="search__filter-text">Короткометражки</span>
+          <FilterCheckbox checked={checkbox} onChange={handleCheckboxChange} />
+          <span className="search__filter-text">Short films</span>
         </label>
       </div>
       <div className="search__underline"></div>

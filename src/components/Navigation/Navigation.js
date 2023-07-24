@@ -7,9 +7,9 @@ import { Link, useLocation } from "react-router-dom";
 import { CurrentUserContext } from "../../providers/CurrentUserContext";
 
 const navigationRoutes = [
-  { path: "/", title: "Главная", smallScreenOnly: true },
-  { path: "/movies", title: "Фильмы" },
-  { path: "/saved-movies", title: "Сохраненные фильмы" },
+  { path: "/", title: "Home", smallScreenOnly: true },
+  { path: "/movies", title: "Movies" },
+  { path: "/saved-movies", title: "Saved Movies" },
 ];
 
 const NavigationLink = ({ path, title, activePath, onClick }) => (
@@ -42,7 +42,7 @@ const NavigationLinks = ({ routes, activePath, onClick }) => (
 const ProfileButton = ({ activePath, ...props }) => (
   <Link className="nav-profile" to="/profile" {...props}>
     <span className={`${activePath === "/" ? "nav-profile__link_white" : ""}`}>
-      Аккаунт
+      Account
     </span>
     <ProfileIcon className="nav-profile__icon" />
   </Link>
@@ -91,10 +91,10 @@ function Navigation() {
   ) : (
     <nav className="nav-auth">
       <Link className="nav-auth__signup" to="/signup">
-        Регистрация
+        Registration
       </Link>
       <Link className="nav-auth__signin" to="/signin">
-        Войти
+        Sign In
       </Link>
     </nav>
   );

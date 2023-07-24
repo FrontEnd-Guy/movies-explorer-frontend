@@ -10,10 +10,10 @@ function NotFound() {
     <main className="not-found">
       <div className="not-found__info">
         <span className="not-found__number">404</span>
-        <p className="not-found__text">Страница не найдена</p>
+        <p className="not-found__text">Page not found</p>
       </div>
       <button className="not-found__link" onClick={handleBack}>
-        Назад
+        Back
       </button>
     </main>
   );

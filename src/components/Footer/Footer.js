@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer">
       <span className="footer__description">
-        Учебный проект Яндекс.Практикум х BeatFilm.
+        Educational project Yandex.Practicum x BeatFilm.
       </span>
       <div className="footer__info">
         <span className="footer__copyright">
@@ -19,7 +19,7 @@ function Footer() {
               rel="noreferrer"
               target="_blank"
             >
-              Яндекс.Практикум
+              Yandex.Practicum
             </a>
           </li>
           <li>

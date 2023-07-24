@@ -18,7 +18,7 @@ function FormInput({
     <label className="form-input">
       {title}
       <input
-        className="form-input__field"
+        className={`form-input__field ${error && 'form-input__field_error'}`}
         name={name}
         type={type}
         disabled={disabled}

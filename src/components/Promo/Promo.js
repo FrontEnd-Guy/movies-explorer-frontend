@@ -15,10 +15,10 @@ function Promo() {
         </div>
         <div className="promo__text-container">
           <h1 className="promo__title">
-            Учебный проект студента факультета Веб-разработки.
+            A study project of a Web Development student.
           </h1>
           <p className="promo__caption">
-            Листайте ниже, чтобы узнать больше про этот проект и его создателя.
+            Scroll down to find out more about this project and its creator.
           </p>
           <button
             className="promo__button"
@@ -28,7 +28,7 @@ function Promo() {
                 .scrollIntoView({ behavior: "smooth" })
             }
           >
-            Узнать больше
+            Find out more
           </button>
         </div>
       </div>
