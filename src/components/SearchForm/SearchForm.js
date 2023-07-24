@@ -28,7 +28,7 @@ function SearchForm({ onSubmit, searchTerm, isChecked, onError, isOnSavedMoviesP
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!input && !isOnSavedMoviesPage) {
-      onError('Нужно ввести ключевое слово');
+      onError('You need to enter a keyword');
     } else {
       onError(null)
       onSubmit(input, checkbox);
@@ -41,13 +41,13 @@ function SearchForm({ onSubmit, searchTerm, isChecked, onError, isOnSavedMoviesP
         <div className="search__bar">
           <form className="search__form" onSubmit={handleSubmit}>
             <SearchIcon className="search__icon" />
-            <input className="search__input" placeholder="Фильм" value={input} onChange={handleInputChange}/>
-            <button className="search__button">Найти</button>
+            <input className="search__input" placeholder="Movie" value={input} onChange={handleInputChange}/>
+            <button className="search__button">Find</button>
           </form>
         </div>
         <label className="search__filter">
           <FilterCheckbox checked={checkbox} onChange={handleCheckboxChange} />
-          <span className="search__filter-text">Короткометражки</span>
+          <span className="search__filter-text">Short films</span>
         </label>
       </div>
       <div className="search__underline"></div>

@@ -7,12 +7,12 @@ function Techs() {
 
   return (
     <section className="techs">
-      <Headline title={"Технологии"} />
+      <Headline title={"Technologies"} />
       <div className="techs__container">
-        <h3 className="techs__title">7 технологий</h3>
+        <h3 className="techs__title">7 technologies</h3>
         <p className="techs__caption">
-          На курсе веб-разработки мы освоили технологии, которые применили в
-          дипломном проекте.
+          During the web-development course, we have mastered technologies that we applied in
+          the graduation project.
         </p>
         <ul className="techs__list">
           {techs.map((tech) => (

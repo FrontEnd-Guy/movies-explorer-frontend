@@ -7,11 +7,11 @@ const useFormWithValidation = (initialValues) => {
 
   const validateName = useCallback(
     (value) => {
-      const nameRegex = /^[A-Za-z\u0400-\u04FF\s-]*$/;
+      const nameRegex = /^[A-Za-z\s-]*$/;
       if (!nameRegex.test(value)) {
-        return "Имя должно содержать только буквы, пробелы и дефис";
+        return "Name should only contain letters, spaces and hyphens";
       } else if (value.length < 3 || value.length > 30) {
-        return "Имя должно быть длиной от 3 до 30 символов";
+        return "Name should be between 3 and 30 characters long";
       } else {
         return "";
       }
@@ -41,13 +41,13 @@ const useFormWithValidation = (initialValues) => {
 
     let validationError = '';
     if (!value) {
-      validationError = "Это поле - обязательное";
+      validationError = "This field is required";
     } else if (name === 'email') {
-      validationError = validateEmail(value) ? '' : 'Невалидный email';
+      validationError = validateEmail(value) ? '' : 'Invalid email';
     } else if (name === 'name') {
       validationError = validateName(value);
     } else if (name === 'password') {
-      validationError = validatePassword(value) ? '' : 'Пароль должен быть не менее 8 символов';
+      validationError = validatePassword(value) ? '' : 'Password must be at least 8 characters';
     }
 
     setValues({...values, [name]: value });

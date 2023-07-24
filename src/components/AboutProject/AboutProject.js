@@ -5,32 +5,32 @@ import "./AboutProject.css";
 const AboutProject = () => {
   return (
     <section className="about" id="about">
-      <Headline title={"О проекте"} />
+      <Headline title={"About the project"} />
       <div className="about__container">
         <div className="about__columns">
           <div className="about__column">
-            <h3 className="about__title">Дипломный проект включал 5 этапов</h3>
+            <h3 className="about__title">The diploma project included 5 stages</h3>
             <p className="about__caption">
-              Составление плана, работу над бэкендом, вёрстку, добавление
-              функциональности и финальные доработки.
+              Drawing up a plan, backend work, layout, adding
+              functionality, and final refinements.
             </p>
           </div>
           <div className="about__column">
             <h3 className="about__title">
-              На выполнение диплома ушло 5 недель
+              The diploma took 5 weeks to complete
             </h3>
             <p className="about__caption">
-              У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было
-              соблюдать, чтобы успешно защититься.
+              Each stage had a soft and hard deadline that needed to be
+              complied with in order to successfully defend the project.
             </p>
           </div>
         </div>
         <div className="about__stages">
           <span className="about__stage-span about__stage-span_accent_green">
-            1 неделя
+            1 week
           </span>
           <span className="about__stage-span about__stage-span_accent_grey">
-            4 недели
+            4 weeks
           </span>
           <span className="about__stage-span">Back-end</span>
           <span className="about__stage-span">Front-end</span>

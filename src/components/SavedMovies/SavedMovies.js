@@ -22,7 +22,7 @@ function SavedMovies() {
     <main className="saved-movies">
       <SearchForm onSubmit={handleSearch} searchTerm={searchTerm || ''} onError={setFormError} isOnSavedMoviesPage={true} />
       {formError && <p>{formError}</p>}
-      {filteredMovies.length === 0 && <p>Ничего не найдено</p>}
+      {filteredMovies.length === 0 && <p>Nothing found</p>}
       <MoviesCardList
         movies={filteredMovies}
         isSaved={() => true}

@@ -63,7 +63,7 @@ function MoviesCardList({ movies, isSaved, saveMovie, removeMovie }) {
       <div className="movies-list__button-container">
         {!isLoadMoreButtonDisabled && (
           <button className="movies-list__button" onClick={handleLoadMore}>
-            Ещё
+            More
           </button>
         )}
       </div>

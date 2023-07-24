@@ -6,14 +6,17 @@ import { CurrentUserContext } from "../../providers/CurrentUserContext";
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Register() {
-  const { apiErrMsg, handleSignUp } = useContext(CurrentUserContext);
+  const { apiErrMsg, handleSignUp, setApiErrMsg } = useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({ email: '', name: '', password: '' });
 
   const handleSubmit = (event) => {
     event.preventDefault();
     handleSignUp(values)
       .then(() => resetForm())
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setApiErrMsg(err.message);
+      });
   };
   
   return (
@@ -21,18 +24,18 @@ function Register() {
       <Form
         handleSubmit={handleSubmit}
         disabled={!isValid}
-        greeting="Добро пожаловать!"
-        buttonText="Зарегистрироваться"
-        question="Уже зарегистрированы?"
+        greeting="Welcome!"
+        buttonText="Sign Up"
+        question="Already registered?"
         link="/signin"
-        linkName="Войти"
+        linkName="Sign In"
         error={apiErrMsg}
       >
         <FormInput
           name="name"
-          title="Имя"
+          title="Name"
           type="text"
-          placeholder="Ваше имя"
+          placeholder="Your name"
           required={true}
           minLength="3"
           maxLength="30"
@@ -44,7 +47,7 @@ function Register() {
           name="email"
           title="E-mail"
           type="email"
-          placeholder="Введите почту"
+          placeholder="Enter your email"
           required={true}
           value={values.email || ''}
           onChange={handleChange}
@@ -52,9 +55,9 @@ function Register() {
         />
         <FormInput
           name="password"
-          title="Пароль"
+          title="Password"
           type="password"
-          placeholder="Введите пароль"
+          placeholder="Enter password"
           required={true}
           minLength="8"
           value={values.password || ''}

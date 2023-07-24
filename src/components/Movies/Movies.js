@@ -72,11 +72,11 @@ function Movies() {
       {isLoading ? (
         <Preloader />
         ) : requestError ? (
-          <p>Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</p>
+          <p>An error occurred while making the request. There might be a problem with the connection, or the server might be unavailable. Please wait a bit and try again</p>
         ) : formError ? (
           <p>{formError}</p>
         ) : hasSearched && fetchedMovies.length === 0 ? (
-          <p>Ничего не найдено</p>
+          <p>Nothing found</p>
         ) : (
           <MoviesCardList
             movies={fetchedMovies}

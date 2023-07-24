@@ -5,14 +5,17 @@ import FormInput from "../FormInput/FormInput";
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Login() {
-  const { apiErrMsg, handleSignIn } = useContext(CurrentUserContext);
+  const { apiErrMsg, handleSignIn, setApiErrMsg } = useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({ email: '', password: '' });
 
   const handleSubmit = (event) => {
     event.preventDefault();
     handleSignIn(values)
       .then(() => resetForm())
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setApiErrMsg(err.message);
+      });
   };
 
   return (
@@ -20,18 +23,18 @@ function Login() {
       <Form
         handleSubmit={handleSubmit}
         disabled={!isValid}
-        greeting="Рады видеть!"
-        buttonText="Войти"
-        question="Ещё не зарегистрированы?"
+        greeting="Glad to see you!"
+        buttonText="Sign In"
+        question="Not registered yet?"
         link="/signup"
-        linkName="Регистрация"
+        linkName="Register"
         error={apiErrMsg}
       >
         <FormInput
           name="email"
           title="E-mail"
           type="email"
-          placeholder="Ваш E-mail"
+          placeholder="Your E-mail"
           required={true}
           minLength="3"
           maxLength="30"
@@ -41,9 +44,9 @@ function Login() {
         />
         <FormInput
           name="password"
-          title="Пароль"
+          title="Password"
           type="password"
-          placeholder="Введите пароль"
+          placeholder="Enter password"
           required={true}
           minLength="8"
           value={values.password || ''}

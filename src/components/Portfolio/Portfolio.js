@@ -6,21 +6,21 @@ function Portfolio() {
   const portfolio = [
     {
       path: "https://frontend-guy.github.io/how-to-learn/",
-      title: "Статичный сайт",
+      title: "Static website",
     },
     {
       path: "https://frontend-guy.github.io/russian-travel/",
-      title: "Адаптивный сайт",
+      title: "Adaptive website",
     },
     {
       path: "https://frontend-guy.github.io/react-mesto-auth/",
-      title: "Одностраничное приложение",
+      title: "Single-page application",
     },
   ];
 
   return (
     <section className="portfolio">
-      <h2 className="portfolio__headline">Портфолио</h2>
+      <h2 className="portfolio__headline">Portfolio</h2>
       <ul className="portfolio__links-list">
         {portfolio.map((item) => (
           <li className="portfolio__links-item" key={item.title}>

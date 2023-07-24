@@ -15,6 +15,9 @@ const CurrentUserProvider = ({ children }) => {
 
   useEffect(() => {
     setApiErrMsg(null);
+  }, [navigate])
+
+  useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       MainApi.getUser(jwt)
@@ -55,9 +58,7 @@ const CurrentUserProvider = ({ children }) => {
         setApiErrMsg(null);
         navigate("/movies");
       } catch (err) {
-        console.log(err);
-        setApiErrMsg(err.message);
-        throw err; 
+        throw err;
       }
     },
     [navigate]
@@ -76,9 +77,7 @@ const CurrentUserProvider = ({ children }) => {
             navigate("/movies");
           });
       } catch (err) {
-        setApiErrMsg(err.message);
-        console.log(err);
-        throw err; 
+        throw err;
       }
     },
     [navigate]

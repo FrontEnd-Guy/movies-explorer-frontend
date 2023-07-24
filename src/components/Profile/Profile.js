@@ -25,7 +25,7 @@ function Profile() {
       e.preventDefault();
       
       if (!values.name || !values.email) {
-        setApiErrMsg("Оба поля обязательны");
+        setApiErrMsg("Both fields are required");
         return;
       }
   
@@ -44,14 +44,14 @@ function Profile() {
 
   return (
     <main className="profile">
-      <h1 className="profile__title">Привет, {user.name}!</h1>
+      <h1 className="profile__title">Hello, {user.name}!</h1>
       <form
         id="profile__form"
         className="profile__form"
         onSubmit={handleSubmit}
       >
         <label className='profile__form-label'>
-          Имя
+          Name
           <input
             name="name"
             className={`profile__form-input ${errors.name ? 'profile__form-input_error' : ''}`}
@@ -90,7 +90,7 @@ function Profile() {
               type="submit"
               form="profile__form"
             >
-              Cохранить
+              Save
             </button>
           </>
         ) : (
@@ -99,10 +99,10 @@ function Profile() {
               className="profile__button"
               onClick={() => setIsEditMode(true)}
             >
-              Редактировать
+              Edit
             </button>
             <button className="profile__button" onClick={handleSignOut}>
-              Выйти из аккаунта
+              Log out
             </button>
           </>
         )}
@@ -112,5 +112,3 @@ function Profile() {
 }
 
 export default Profile;
-
-
