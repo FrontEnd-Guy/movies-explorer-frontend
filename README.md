@@ -1,5 +1,4 @@
 # Final Web Project - Movie Search Service 🎬
-![Node.js CI](https://github.com/FrontEnd-Guy/movies-explorer-frontend/workflows/Node.js%20CI/badge.svg) 
 
 ## 📜 Introduction
 
