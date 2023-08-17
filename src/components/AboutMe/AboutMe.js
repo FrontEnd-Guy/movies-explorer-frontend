@@ -17,7 +17,7 @@ function AboutMe() {
         </div>
         <div className="student__text-container">
           <h3 className="student__title">Pavel</h3>
-          <span className="student__caption">Software Engineer, 31</span>
+          <span className="student__caption">Web developer, 31</span>
           <p className="student__bio">
               Originating from Russia and graduating with a major in 'System Analysis'
                from the Southern Federal University, I initially started my career as 
@@ -28,7 +28,7 @@ function AboutMe() {
                attending the Yandex Practicum bootcamp, where I meticulously developed 
                my web development capabilities and completed a series of rigorous 
                projects, each scrutinized by professional reviewers. Now, I'm 
-               leveraging these skills to provide top-quality freelance services, 
+               leveraging these skills to provide freelance services, 
                and I'm eager to contribute to a project startup company. 
           </p>
           <a
