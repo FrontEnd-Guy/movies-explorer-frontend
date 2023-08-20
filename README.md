@@ -1,8 +1,9 @@
-# Final Web Project - Movie Search Service 🎬
+# Movie Explorer 🎬
 
 ## 📜 Introduction
 
-This is a movie search service, meticulously crafted as the crowning achievement of the web faculty at [Yandex.Practicum](https://practicum.com). The service offers movie enthusiasts the capability to search for their favorite films on demand and securely save them within their personal accounts.
+Movie Explorer is a MERN stack application that fetches and displays movies from the Movies API.
+After the users are authenticated, can bookmark movies and view on their profile page. This app was created with Create-React-App. The development process was done in 2-week agile sprints. The back-end is built in Node/Express.js and served on Yandex Cloud server. User data, credentials, and saved movies are stored in MongoDB.
 
 ## 🌟 Key Features
 
