@@ -2,6 +2,8 @@
 
 ## 📜 Introduction
 
+This is a movie search service, meticulously crafted as the crowning achievement of the web faculty at [Yandex.Practicum](https://practicum.com). The service offers movie enthusiasts the capability to search for their favorite films on demand and securely save them within their personal accounts.
+
 ## 🌟 Key Features
 
 - 🚀 **Express Server:** The foundational setup and infrastructure.
