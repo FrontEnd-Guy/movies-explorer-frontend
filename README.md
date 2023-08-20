@@ -1,9 +1,8 @@
 # Final Web Project - Movie Search Service 🎬
-![Node.js CI](https://github.com/user/repo/workflows/Node.js%20CI/badge.svg) <!-- Замените 'user' и 'repo' на ваши GitHub имя пользователя и название репозитория -->
 
 ## 📜 Introduction
 
-This is a movie search service, meticulously crafted as the crowning achievement of the web faculty at [@yandex.practicum](https://github.com/yandex.practicum). The service offers movie enthusiasts the capability to search for their favorite films on demand and securely save them within their personal accounts.
+This is a movie search service, meticulously crafted as the crowning achievement of the web faculty at [Yandex.Practicum](https://practicum.com). The service offers movie enthusiasts the capability to search for their favorite films on demand and securely save them within their personal accounts.
 
 ## 🌟 Key Features
 

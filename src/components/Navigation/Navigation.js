@@ -91,7 +91,7 @@ function Navigation() {
   ) : (
     <nav className="nav-auth">
       <Link className="nav-auth__signup" to="/signup">
-        Registration
+        Sign Up
       </Link>
       <Link className="nav-auth__signin" to="/signin">
         Sign In
