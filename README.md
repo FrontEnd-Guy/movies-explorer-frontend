@@ -2,8 +2,6 @@
 
 ## 📜 Introduction
 
-This is a movie search service, developed as a final project at the web faculty at [@yandex.practicum](https://tripleten.com). The service allows users to search for movies on demand and save them in their personal accounts.
-
 ## 🌟 Key Features
 
 - 🚀 **Express Server:** The foundational setup and infrastructure.

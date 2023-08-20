@@ -17,19 +17,14 @@ function AboutMe() {
         </div>
         <div className="student__text-container">
           <h3 className="student__title">Pavel</h3>
-          <span className="student__caption">Web developer, 31</span>
+          <span className="student__caption">Web developer</span>
           <p className="student__bio">
-              Originating from Russia and graduating with a major in 'System Analysis'
-               from the Southern Federal University, I initially started my career as 
-               a trader for a large international animal feed producer. But with the 
-               changing political climate, I moved to the United States and currently 
-               work as a CAD Programmer, creating digital templates in AutoCAD and 
-               crafting programs for CNC machines. I further expanded my skills by 
-               attending the Yandex Practicum bootcamp, where I meticulously developed 
-               my web development capabilities and completed a series of rigorous 
-               projects, each scrutinized by professional reviewers. Now, I'm 
-               leveraging these skills to provide freelance services, 
-               and I'm eager to contribute to a project startup company. 
+            My name is Pavel Zakharov. I'm a full-stack web developer. 
+            I'm coming from CAD engineering and CNC programming background. 
+            I've learned to code through various online resources and Practicum by Yandex. 
+            This app was my final project at Practicum. 
+            I've built both the backend and the frontend. 
+            The tech stack is MERN (MongoDB, ExpressJS, React, Node).
           </p>
           <a
             className="student__github-link"
