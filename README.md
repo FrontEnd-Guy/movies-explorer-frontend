@@ -26,6 +26,7 @@ After the users are authenticated, can bookmark movies and view on their profile
 
 ## 🔗 Links
 
-- [Figma](https://drive.google.com/drive/folders/1RB82jIz21ZqpxKsrmKUMma9A-W6MTqNf?usp=sharing)
-- [Frontend](https://pavel.nomoredomains.monster/)
-- [Backend](https://api.pavel.nomoredomains.monster/)
+- 🎨 [Design on Figma](https://drive.google.com/drive/folders/1RB82jIz21ZqpxKsrmKUMma9A-W6MTqNf?usp=sharing)
+- 🌍 [Frontend](https://pavel.nomoredomains.monster/)
+- 🔧 [Backend](https://api.pavel.nomoredomains.monster/)
+- 📦 [Backend Repository on GitHub](https://github.com/FrontEnd-Guy/movies-explorer-api)
