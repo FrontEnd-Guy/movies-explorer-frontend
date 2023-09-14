@@ -30,3 +30,25 @@ After the users are authenticated, can bookmark movies and view on their profile
 - 🌍 [Frontend](https://pavel.nomoredomains.monster/)
 - 🔧 [Backend](https://api.pavel.nomoredomains.monster/)
 - 📦 [Backend Repository on GitHub](https://github.com/FrontEnd-Guy/movies-explorer-api)
+
+## 💻 Setup & Project Start
+
+If you wish to run this project locally, follow these steps:
+
+1. **Clone the repository**:
+```
+git clone https://github.com/FrontEnd-Guy/movies-explorer-frontend.git
+```
+2. **Navigate to the project directory:
+```
+cd movies-explorer-frontend
+```
+3. **Install the dependencies:
+```
+npm install
+```
+4. **Start the development server:
+```
+npm start
+```
+Open http://localhost:3000 in your browser to view the application.
